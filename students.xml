@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<student_list>
+    <student>
+        <name>Vasiliy</name>
+        <surname>Lomachenko</surname>
+        <age>20</age>
+        <phone>0660011000</phone>
+        <adress>Kharcov, Plehanovskaya 8, 39</adress>
+        <group>IT-10</group>
+    </student>
+    <student>
+        <name>Roman</name>
+        <surname>Prudnichenko</surname>
+        <age>21</age>
+        <phone>0990099889</phone>
+        <adress>Kharcov, Poshtova 10, 40</adress>
+        <group>IK-1</group>
+    </student>
+    <student>
+        <name>Ulia</name>
+        <surname>Kulinichenko</surname>
+        <age>19</age>
+        <phone>0505566000</phone>
+        <adress>Kharcov, Traktorostroteley 5, 5</adress>
+        <group>IT-6</group>
+    </student>
+    <student>
+        <name>Diana</name>
+        <surname>Morozova</surname>
+        <age>22</age>
+        <phone>09909097788</phone>
+        <adress>Kharcov, Novaya 5, 39</adress>
+        <group>PD-7</group>
+    </student>
+    <student>
+        <name>Aleksey</name>
+        <surname>Gontarev</surname>
+        <age>20</age>
+        <phone>0990909099</phone>
+        <adress>Kharcov, Plehanovskaya 8, 39</adress>
+        <group>IT-10</group>
+    </student>
+    <student>
+        <name>Daniil</name>
+        <surname>Rotnev</surname>
+        <age>19</age>
+        <phone>0668899000</phone>
+        <adress>Kharcov, Plehanovskaya 8, 39</adress>
+        <group>IT-10</group>
+    </student>
+
+</student_list>
