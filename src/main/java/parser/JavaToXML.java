@@ -15,6 +15,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 /**
  * Convert from JavaObject.
  */
@@ -61,7 +62,6 @@ public class JavaToXML {
         }
 
 
-
         return element;
     }
 
@@ -69,7 +69,7 @@ public class JavaToXML {
      * Sends an email.
      */
     private void writeDocument(Document document, String path)
-            throws TransformerFactoryConfigurationError, TransformerException {
+        throws TransformerFactoryConfigurationError, TransformerException {
         Source domSource = new DOMSource(document);
         Result fileResult = new StreamResult(new File(path + ".xml"));
         TransformerFactory factory = TransformerFactory.newInstance();
