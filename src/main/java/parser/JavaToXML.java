@@ -1,17 +1,28 @@
 package parser;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
+import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+/**
+ * Convert from JavaObject.
+ */
 
 public class JavaToXML {
+    /**
+     * Convert from JavaObject in xml document.
+     */
     public void saveInXML(Member member, String name) throws TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
@@ -54,6 +65,9 @@ public class JavaToXML {
         return element;
     }
 
+    /**
+     * Sends an email.
+     */
     private void writeDocument(Document document, String path)
             throws TransformerFactoryConfigurationError, TransformerException {
         Source domSource = new DOMSource(document);

@@ -4,36 +4,48 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 public class XMLtoJavaTest {
     @Test
-    public void parserToJavaTest() throws IOException, SAXException, ParserConfigurationException, TransformerException {
+    public void parserToJavaTest() throws IOException, SAXException, ParserConfigurationException {
+        Member expected = getMember();
         XMLtoJava xmLtoJava = new XMLtoJava();
-        Member member = xmLtoJava.parserToJava("test.xml");
-        JavaToXML javaToXML = new JavaToXML();
-        javaToXML.saveInXML(member, "resultTest");
-        List<String> links1 = Files.readAllLines(Paths.get("test.xml"), StandardCharsets.UTF_8);
-        List<String> links2 = Files.readAllLines(Paths.get("resultTest.xml"), StandardCharsets.UTF_8);
-        String expected = builder(links1).replaceAll(" ", "");
-        String actual = builder(links2).replaceAll(" ", "");
-
-        assertEquals(expected, actual);
+        Member actual = xmLtoJava.parserToJava("test.xml");
+        System.out.println(expected.toString() + "\n" + actual.toString());
+        assertEquals(expected.toString(), actual.toString());
     }
-    private String builder(List<String> list){
-        StringBuilder sb = new StringBuilder();
-        sb.delete(0, sb.length());
-        for (String line : list) {
-            sb.append(line);
-        }
-        return sb.toString();
+
+    private Member getMember() {
+        Member expected = new Member();
+        Member childFood = new Member();
+        Member childName = new Member();
+        Member childDescription = new Member();
+
+        childFood.addChild(childName);
+        childFood.addChild(childDescription);
+        Map<String, String> attributes = new HashMap();
+        attributes.put("days", "Monday, Friday");
+        expected.setAttributes(attributes);
+        expected.setName("breakfast_menu");
+        childFood.setName("food");
+        expected.addChild(childFood);
+        childFood.setParent(expected);
+        childDescription.setName("description");
+        childName.setName("name");
+        childName.setContent("Belgian Waffles");
+        childDescription.setContent("Two of our famous Belgian Waffles with plenty of real maple syrup");
+        return expected;
+    }
+
+    @Test(expected = IOException.class)
+    public void parserToJavaTestCatch() throws IOException, SAXException, ParserConfigurationException {
+        XMLtoJava xmLtoJava = new XMLtoJava();
+        Member actual = xmLtoJava.parserToJava("no.xml");
     }
 
 

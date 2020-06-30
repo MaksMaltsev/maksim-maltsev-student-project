@@ -1,6 +1,8 @@
 package console;
 
 
+import java.util.List;
+import navigation.Searchable;
 import org.xml.sax.SAXException;
 import parser.JavaToXML;
 import parser.Member;
@@ -22,6 +24,7 @@ public class RunConsole {
         String name = in.nextLine();
         JavaToXML javaToXML = new JavaToXML();
         javaToXML.saveInXML(member, name);
+        List<Member> result = member.searchInDeep("tfyt");
 
 
     }
